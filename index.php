@@ -8,7 +8,7 @@ $request = Request::createFromGlobals();
 
 
 //handle routes
-$dispatcher = require('App/Config/routes.php');
+$dispatcher = require('routes/web.php');
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 
