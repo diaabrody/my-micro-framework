@@ -1,0 +1,13 @@
+{
+    "name": "diaa/microframework",
+    "authors": [
+        {
+            "name": "diaa",
+            "email": "diaa_osama70@outlook.com"
+        }
+    ],
+    "require": {
+        "symfony/http-foundation": "^5.1",
+        "nikic/fast-route": "^1.3"
+    }
+}
