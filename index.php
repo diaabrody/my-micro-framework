@@ -9,10 +9,16 @@ $request = Request::createFromGlobals();
 
 //handle routes
 $dispatcher = require('App/Config/routes.php');
-$route = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+$httpMethod = $_SERVER['REQUEST_METHOD'];
+$uri = $_SERVER['REQUEST_URI'];
 
 
+// Strip query string (?foo=bar) and decode URI
+if (false !== $pos = strpos($uri, '?')) {
+    $uri = substr($uri, 0, $pos);
+}
 
+$route = $dispatcher->dispatch($httpMethod,$uri);
 switch ($route[0]) {
     case FastRoute\Dispatcher::NOT_FOUND:
         // ... 404 Not Found
