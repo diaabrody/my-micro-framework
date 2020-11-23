@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-class ArticleController extends AbastractController
+class ArticleController
 {
     public function index(){
         var_dump("index");die;

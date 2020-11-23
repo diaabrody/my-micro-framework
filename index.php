@@ -1,13 +1,16 @@
 <?php
-require_once "bootstrap/bootstrap.php";
+
+// get container
+ $container= require_once "bootstrap/bootstrap.php";
 //init request
 use Symfony\Component\HttpFoundation\Request;
 $request = Request::createFromGlobals();
 
 
 //handle routes
-$dispatcher = require('app/Config/routes.php');
+$dispatcher = require('App/Config/routes.php');
 $route = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+
 
 
 switch ($route[0]) {
@@ -19,11 +22,10 @@ switch ($route[0]) {
         // ... 405 Method Not Allowed
         break;
     case FastRoute\Dispatcher::FOUND:
-        $handler     = $route[1];
-        $vars = $route[2];
-        // controller
-        var_dump($handler);die;
-        // ... call $handler with $vars
+        $controller= $route[1];
+        $args = $route[2];
+        $container->call($controller , $args);
         break;
 }
+
 
