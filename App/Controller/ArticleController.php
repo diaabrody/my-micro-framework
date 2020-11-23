@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Controller;
-class ArticleController
+use App\Repositories\Article\IArticleRepository;
+
+class ArticleController extends AbastractController
 {
-    public function index(){
-        var_dump("index");die;
+    public function index(IArticleRepository $articleRepository){
+        var_dump($articleRepository);die;
     }
 
 }
